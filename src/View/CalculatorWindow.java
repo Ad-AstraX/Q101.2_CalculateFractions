@@ -42,6 +42,7 @@ public class CalculatorWindow extends JFrame {
                                         );
                     resultNom.setText(String.valueOf(resultFrac.getNom()));
                     resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                    operator.setText("+");
                 } else if (chooseOperator.getSelectedIndex() == 1) {
                     Fraction resultFrac = new Fraction(
                             Integer.parseInt(firstNom.getText()),
@@ -53,6 +54,7 @@ public class CalculatorWindow extends JFrame {
                     );
                     resultNom.setText(String.valueOf(resultFrac.getNom()));
                     resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                    operator.setText("-");
                 } else if (chooseOperator.getSelectedIndex() == 2) {
                     Fraction resultFrac = new Fraction(
                             Integer.parseInt(firstNom.getText()),
@@ -64,6 +66,7 @@ public class CalculatorWindow extends JFrame {
                     );
                     resultNom.setText(String.valueOf(resultFrac.getNom()));
                     resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                    operator.setText("*");
                 } else if (chooseOperator.getSelectedIndex() == 3) {
                     Fraction resultFrac = new Fraction(
                             Integer.parseInt(firstDenom.getText()),
@@ -75,6 +78,7 @@ public class CalculatorWindow extends JFrame {
                     );
                     resultNom.setText(String.valueOf(resultFrac.getNom()));
                     resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                    operator.setText("/");
                 }
             }
         });
