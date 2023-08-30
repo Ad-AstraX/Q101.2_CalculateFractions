@@ -17,11 +17,24 @@ public class Fraction {
         return shorten(resultFrac);
     }
 
-    public Fraction shorten(Fraction frac) {
-        return new Fraction (
-                frac.getNom() / findGCD(Math.max(nom, denom), Math.min(nom, denom)),
-                frac.getDenom() / findGCD(Math.max(nom, denom), Math.min(nom, denom)));
+    public Fraction multFractions(Fraction otherFrac) {
+        Fraction resultFrac = new Fraction (
+                this.nom * otherFrac.getNom(),
+                this.denom * otherFrac.getDenom()
+        );
+        System.out.println (resultFrac.getNom());
+        return shorten(resultFrac);
     }
+
+    public Fraction shorten(Fraction frac) {
+        if (frac.getNom() == 0) {
+            return new Fraction (0, 1);
+        }
+        return new Fraction (
+                frac.getNom() / findGCD(Math.max(frac.getNom(), frac.getDenom()), Math.min(frac.getNom(), frac.getDenom())),
+                frac.getDenom() / findGCD(Math.max(frac.getNom(), frac.getDenom()), Math.min(frac.getNom(), frac.getDenom())));
+    }
+
     public int findGCD(int a, int b) {
         int r = a % b;
         if (r != 0) {
@@ -29,6 +42,7 @@ public class Fraction {
         }
         return b;
     }
+
     public int getNom() {
         return nom;
     }

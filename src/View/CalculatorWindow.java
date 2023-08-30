@@ -31,28 +31,51 @@ public class CalculatorWindow extends JFrame {
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                resultNom.setText(
-                        String.valueOf(
-                        new Fraction(
-                                Integer.parseInt(firstNom.getText()),
-                                Integer.parseInt(firstDenom.getText())).addFractions(
-                                        new Fraction(
-                                                Integer.parseInt(secondNom.getText()),
-                                                Integer.parseInt(secondDenom.getText())
-                                        )
-                        ).getNom())
-                );
-                resultDenom.setText(
-                        String.valueOf(
-                                new Fraction(
-                                        Integer.parseInt(firstNom.getText()),
-                                        Integer.parseInt(firstDenom.getText())).addFractions(
-                                        new Fraction(
-                                                Integer.parseInt(secondNom.getText()),
-                                                Integer.parseInt(secondDenom.getText())
-                                        )
-                                ).getDenom())
-                );
+                if (chooseOperator.getSelectedIndex() == 0) {
+                    Fraction resultFrac = new Fraction(
+                                            Integer.parseInt(firstNom.getText()),
+                                            Integer.parseInt(firstDenom.getText())).addFractions(
+                                            new Fraction(
+                                                    Integer.parseInt(secondNom.getText()),
+                                                    Integer.parseInt(secondDenom.getText())
+                                            )
+                                        );
+                    resultNom.setText(String.valueOf(resultFrac.getNom()));
+                    resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                } else if (chooseOperator.getSelectedIndex() == 1) {
+                    Fraction resultFrac = new Fraction(
+                            Integer.parseInt(firstNom.getText()),
+                            Integer.parseInt(firstDenom.getText())).addFractions(
+                            new Fraction(
+                                    Integer.parseInt(secondNom.getText())*-1,
+                                    Integer.parseInt(secondDenom.getText())
+                            )
+                    );
+                    resultNom.setText(String.valueOf(resultFrac.getNom()));
+                    resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                } else if (chooseOperator.getSelectedIndex() == 2) {
+                    Fraction resultFrac = new Fraction(
+                            Integer.parseInt(firstNom.getText()),
+                            Integer.parseInt(firstDenom.getText())).multFractions(
+                            new Fraction(
+                                    Integer.parseInt(secondNom.getText()),
+                                    Integer.parseInt(secondDenom.getText())
+                            )
+                    );
+                    resultNom.setText(String.valueOf(resultFrac.getNom()));
+                    resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                } else if (chooseOperator.getSelectedIndex() == 3) {
+                    Fraction resultFrac = new Fraction(
+                            Integer.parseInt(firstDenom.getText()),
+                            Integer.parseInt(firstNom.getText())).multFractions(
+                            new Fraction(
+                                    Integer.parseInt(secondDenom.getText()),
+                                    Integer.parseInt(secondNom.getText())
+                            )
+                    );
+                    resultNom.setText(String.valueOf(resultFrac.getNom()));
+                    resultDenom.setText(String.valueOf(resultFrac.getDenom()));
+                }
             }
         });
     }
